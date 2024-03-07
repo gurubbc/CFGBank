@@ -21,7 +21,32 @@ public class MainApp {
 			System.out.println("Find your account details below");
 			customer.setAccount(account);
 			System.out.println(customer);
+			System.out.println("Before withdraw "+customer.getAccount().getAccountBalance());
+			customer.getAccount().withdraw(500000);
+			System.out.println("After withdraw "+customer.getAccount().getAccountBalance());
+			customer.getAccount().deposit(500);
+			System.out.println("After deposit "+customer.getAccount().getAccountBalance());
 			
+		}
+		else {
+			System.out.println("Please check the KYC details, some error in document");
+			System.out.println("One of the KYC validation failed....please check");
+			System.out.println("Account has not been created");
+		}
+		
+		Account account1=services.applyForNewAccount(customer,"Current");
+		
+		if (account1.getAccountNumber()!=0) {
+			System.out.println("Acccount has been opened successfully");
+			System.out.println("This is your account no "+account1.getAccountNumber());
+			System.out.println("Find your account details below");
+			customer.setAccount(account1);
+			System.out.println(customer);
+			System.out.println("Before withdraw "+customer.getAccount().getAccountBalance());
+			customer.getAccount().withdraw(500000);
+			System.out.println("After withdraw "+customer.getAccount().getAccountBalance());
+			customer.getAccount().deposit(500);
+			System.out.println("After deposit "+customer.getAccount().getAccountBalance());
 			
 		}
 		else {
