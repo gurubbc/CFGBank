@@ -1,6 +1,7 @@
 package com.cfgbank.flexcube.service;
 
 import com.cfgbank.flexcube.model.Account;
+import com.cfgbank.flexcube.model.CurrentAccount;
 import com.cfgbank.flexcube.model.Customer;
 import com.cfgbank.flexcube.model.SavingsAccount;
 
@@ -27,6 +28,9 @@ public class CustomerService {
 			// include the logic to create the type of account
 			if (accountType.equalsIgnoreCase("Savings"))
 				newAccount=new SavingsAccount("Savings", generateAccountNumber(),2000.0,0.029);
+			if (accountType.equalsIgnoreCase("Current"))
+				newAccount=new CurrentAccount("Current", generateAccountNumber(),2000.0,2000.0);
+				
 
 		}
 			
