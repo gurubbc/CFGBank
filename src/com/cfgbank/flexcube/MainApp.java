@@ -39,11 +39,12 @@ public class MainApp {
 		if (account1.getAccountNumber()!=0) {
 			System.out.println("Acccount has been opened successfully");
 			System.out.println("This is your account no "+account1.getAccountNumber());
+			System.out.println("Account type is "+account1.getAccountType());
 			System.out.println("Find your account details below");
 			customer.setAccount(account1);
 			System.out.println(customer);
 			System.out.println("Before withdraw "+customer.getAccount().getAccountBalance());
-			customer.getAccount().withdraw(500000);
+			customer.getAccount().withdraw(4000);
 			System.out.println("After withdraw "+customer.getAccount().getAccountBalance());
 			customer.getAccount().deposit(500);
 			System.out.println("After deposit "+customer.getAccount().getAccountBalance());
