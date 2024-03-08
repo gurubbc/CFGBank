@@ -4,7 +4,7 @@ public class CurrentAccount extends Account {
 	
 	// specific to CurrentAccount
 	// You can overwithdraw upto 2000 dirhams
-	double overwidthrawLimit;
+	private double overwidthrawLimit;
 
 	public CurrentAccount(String accountType, int accountNumber, double accountBalance, double overwidthrawLimit) {
 		super(accountType, accountNumber, accountBalance);
@@ -13,13 +13,16 @@ public class CurrentAccount extends Account {
 	
 	@Override
 	public double withdraw(double withdrawAmount) {
-		if (withdrawAmount <= (this.accountBalance+this.overwidthrawLimit)) {
-			System.out.println("Successfully withdrawn....");
-			this.accountBalance=this.accountBalance-withdrawAmount;
+		System.out.println("Current Account : Current balance "+this.getAccountBalance());
+		System.out.println("Over Withdraw Limit "+this.overwidthrawLimit);
+		System.out.println("So, you can withdraw upto "+(this.getAccountBalance()+this.overwidthrawLimit));
+		if (withdrawAmount <= (this.getAccountBalance()+this.overwidthrawLimit)) {
+			System.out.println("Current Account Successfully withdrawn....");
+			this.setAccountBalance(this.getAccountBalance()-withdrawAmount);
 			return withdrawAmount;
 			
 		}  else {
-			System.out.println("You have insufficient balance, can't withdraw");
+			System.out.println("Current Account You have insufficient balance, can't withdraw");
 			System.out.println("Enter a smaller amount");
 			return 0;
 		}
@@ -27,8 +30,10 @@ public class CurrentAccount extends Account {
 
 	@Override
 	public String toString() {
-		return "CurrentAccount [overwidthrawLimit=" + overwidthrawLimit + "]";
+		return "CurrentAccount [overwidthrawLimit=" + overwidthrawLimit + ", accountType=" + this.getAccountType()
+				+ ", accountNumber=" + this.getAccountNumber()+ ", accountBalance=" + this.getAccountBalance() + "]";
 	}
 
+	
 	
 }

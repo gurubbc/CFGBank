@@ -1,9 +1,9 @@
 package com.cfgbank.flexcube.model;
 
-public class Account {
-	String accountType;
-	int accountNumber;
-	double accountBalance;
+public abstract class Account {
+	private String accountType;
+	private int accountNumber;
+	private double accountBalance;
 	
 	
 	
@@ -46,18 +46,7 @@ public class Account {
 		this.accountBalance=this.accountBalance+depositAmount;
 	}
 
-	public double withdraw(double withdrawAmount) {
-		if (withdrawAmount <= this.accountBalance) {
-			System.out.println("Successfully withdrawn....");
-			this.accountBalance=this.accountBalance-withdrawAmount;
-			return withdrawAmount;
-			
-		}  else {
-			System.out.println("You have insufficient balance, can't withdraw");
-			System.out.println("Enter a smaller amount");
-			return 0;
-		}
-	}
+	public abstract double withdraw(double withdrawAmount) ;
 
 	@Override
 	public String toString() {

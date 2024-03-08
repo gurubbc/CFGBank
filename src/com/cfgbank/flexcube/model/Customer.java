@@ -14,8 +14,8 @@ public class Customer {
 	private String emailId;
 	private long rnpNumber;
 	private String cinNumber;
-	int age;
-	Account account;
+	private int age;
+	private Account account;
 	
 	public Customer() {
 		super();

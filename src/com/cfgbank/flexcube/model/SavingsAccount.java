@@ -3,7 +3,7 @@ package com.cfgbank.flexcube.model;
 public class SavingsAccount extends Account {
 	
 	// specific to SavingsAccount
-	double interestRate;
+	private double interestRate;
 
 	
 	
@@ -24,7 +24,7 @@ public class SavingsAccount extends Account {
 	// this is specific to this class
 	public double calculateInterest() {
 		// local variable
-		double interestEarned=this.accountBalance*this.interestRate;
+		double interestEarned=this.getAccountBalance()*this.interestRate;
 		System.out.println("SavingsAccount...interest is "+interestEarned);
 		return interestEarned;
 	}
@@ -32,13 +32,28 @@ public class SavingsAccount extends Account {
 	// Method overriding
 	public void checkBalance() {
 		super.checkBalance();
-		System.out.println("Interest Earned is "+(this.accountBalance*this.interestRate));
+		System.out.println("Interest Earned is "+(this.getAccountBalance()*this.interestRate));
 	}
 
 	@Override
 	public String toString() {
-		return "SavingsAccount [interestRate=" + interestRate + ", accountType=" + accountType + ", accountNumber="
-				+ accountNumber + ", accountBalance=" + accountBalance + "]";
+		return "SavingsAccount [interestRate=" + interestRate + ", accountType=" + this.getAccountType() + ", accountNumber="
+				+ this.getAccountNumber() + ", accountBalance=" + this.getAccountBalance() + "]";
+	}
+
+	@Override
+	public double withdraw(double withdrawAmount) {
+		if (withdrawAmount <= this.getAccountBalance()) {
+			System.out.println("Successfully withdrawn....");
+			this.setAccountBalance(this.getAccountBalance()-withdrawAmount);
+			return withdrawAmount;
+			
+		}  else {
+			System.out.println("You have insufficient balance, can't withdraw");
+			System.out.println("Enter a smaller amount");
+			return 0;
+		}
+
 	}
 
 	
